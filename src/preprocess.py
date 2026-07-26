@@ -14,7 +14,7 @@ def get_train_transforms():
         )
     ])
 
-def get_test_transform():
+def get_test_transforms():
     return transforms.Compose([
         transforms.Grayscale(num_output_channels=3),
         transforms.Resize((IMAGE_SIZE, IMAGE_SIZE)),
