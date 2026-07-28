@@ -147,7 +147,7 @@ Overall Test Accuracy:
 Clone the repository
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/brain-tumor-classification.git
+git clone https://github.com/karthikjash/brain-tumor-classification.git
 
 cd brain-tumor-classification
 ```
