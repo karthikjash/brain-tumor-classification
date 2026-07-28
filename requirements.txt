@@ -63,11 +63,17 @@ jupyterlab==4.6.2
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.28.0
 jupyterlab_widgets==3.0.16
+jupytext==1.19.5
+kaggle==2.2.4
+kagglesdk==0.1.35
 kiwisolver==1.5.0
 lark==1.3.1
+markdown-it-py==4.2.0
 MarkupSafe==3.0.3
 matplotlib==3.11.1
 matplotlib-inline==0.2.2
+mdit-py-plugins==0.6.1
+mdurl==0.1.2
 mistune==3.3.4
 mpmath==1.3.0
 narwhals==2.24.0
@@ -114,8 +120,10 @@ pydeck==0.9.3
 Pygments==2.20.0
 pyparsing==3.3.2
 python-dateutil==2.9.0.post0
+python-dotenv==1.2.2
 python-json-logger==4.1.0
 python-multipart==0.0.32
+python-slugify==8.0.4
 PyYAML==6.0.3
 pyzmq==27.1.0
 referencing==0.37.0
@@ -138,6 +146,7 @@ streamlit==1.60.0
 sympy==1.14.0
 tenacity==9.1.4
 terminado==0.18.1
+text-unidecode==1.3
 threadpoolctl==3.6.0
 tinycss2==1.5.1
 toml==0.10.2

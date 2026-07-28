@@ -1,29 +1,42 @@
-# Virtual Environment
-.venv/
-
 # Python
 __pycache__/
 *.py[cod]
+*.so
 
-# Dataset
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
+# Virtual Environment
+.venv/
+venv/
+env/
 
-# Models
-models/*.pth
-models/*.pt
-
-# Outputs
-outputs/
-
-# Notebook
+# Jupyter
 .ipynb_checkpoints/
 
 # VS Code
 .vscode/
 
-# Linux
+# PyCharm
+.idea/
+
+# Model Checkpoints
+checkpoints/*.pth
+
+# Dataset
+data/raw/
+
+# Output Files
+outputs/
+
+# Logs
+*.log
+
+# OS Files
 .DS_Store
 Thumbs.db
+
+# Python Packaging
+build/
+dist/
+*.egg-info/
+
+# Streamlit
+.streamlit/secrets.toml
