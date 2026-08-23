@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-
 from src.config import (
     EPOCHS,
     LEARNING_RATE,
@@ -16,6 +15,7 @@ from src.engine import (
     validate_one_epoch,
 )
 
+
 def main():
 
     device = torch.device(
@@ -23,7 +23,9 @@ def main():
     )
 
     print(f"Using device: {device}")
+
     train_loader, test_loader = create_dataloaders()
+
     model = create_model()
     model.to(device)
 
@@ -31,7 +33,7 @@ def main():
 
     optimizer = optim.Adam(
         model.parameters(),
-        lr = LEARNING_RATE,
+        lr=LEARNING_RATE,
         weight_decay=WEIGHT_DECAY,
     )
 
@@ -44,8 +46,22 @@ def main():
 
     best_loss = float("inf")
 
+    # ---------------------------------------------
+    # Training History
+    # ---------------------------------------------
+    history = {
+        "train_loss": [],
+        "train_acc": [],
+        "val_loss": [],
+        "val_acc": [],
+    }
+
+    # Training Loop
+    
     for epoch in range(EPOCHS):
-        print(f"\nEpoch {epoch+1}/{EPOCHS}")
+
+        print(f"\nEpoch {epoch + 1}/{EPOCHS}")
+
         train_loss, train_acc = train_one_epoch(
             model,
             train_loader,
@@ -55,13 +71,19 @@ def main():
         )
 
         val_loss, val_acc = validate_one_epoch(
-            model, 
+            model,
             test_loader,
             criterion,
             device,
         )
 
         scheduler.step(val_loss)
+
+        # Store history
+        history["train_loss"].append(train_loss)
+        history["train_acc"].append(train_acc)
+        history["val_loss"].append(val_loss)
+        history["val_acc"].append(val_acc)
 
         print(
             f"Train Loss: {train_loss:.4f} | "
@@ -70,17 +92,29 @@ def main():
 
         print(
             f"Val Loss: {val_loss:.4f} | "
-            f"Val Acc: {val_acc:.2f}% " 
-
+            f"Val Acc: {val_acc:.2f}%"
         )
 
+        # Save Best Model
         if val_loss < best_loss:
+
             best_loss = val_loss
+
             torch.save(
                 model.state_dict(),
                 "checkpoints/best_model.pth",
             )
-            print("Best model saved. ")
+
+            print("Best model saved.")
+
+    torch.save(
+        history,
+        "outputs/training_history.pth",
+    )
+
+    print("\nTraining completed.")
+    print("Training history saved.")
+
 
 if __name__ == "__main__":
     main()
