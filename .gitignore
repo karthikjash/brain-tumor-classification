@@ -24,7 +24,9 @@ checkpoints/*.pth
 data/raw/
 
 # Output Files
-outputs/
+outputs/*
+!outputs/figures/
+!outputs/figures/*.png
 
 # Logs
 *.log
